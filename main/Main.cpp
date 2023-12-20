@@ -83,25 +83,25 @@ void UpdateInput(Mesh *m, Matrix cameraV)
 	{
 		rotateVector.z += 0.1f;
 	}
-	// ÔÚUpdateInputº¯ÊýÖÐÌí¼ÓÒÔÏÂ´úÂë
+	// åœ¨UpdateInputå‡½æ•°ä¸­æ·»åŠ ä»¥ä¸‹ä»£ç 
 	if (IS_KEY_DOWN('1'))
 	{
-		// Ôö¼Ó x ·ÖÁ¿
+		// å¢žåŠ  x åˆ†é‡
 		cameraV = camera->LookAt(camera->transform.position, Vector3f(0.5, 0, -1), Vector3f(0, 1, 0));
 	}
 	else if (IS_KEY_DOWN('2'))
 	{
-		// ¼õÐ¡ x ·ÖÁ¿
+		// å‡å° x åˆ†é‡
 		cameraV = camera->LookAt(camera->transform.position, Vector3f(-0.5, 0, -1), Vector3f(0, 1, 0));
 	}
 	else if (IS_KEY_DOWN('3'))
 	{
-		// Ôö¼Ó y ·ÖÁ¿
+		// å¢žåŠ  y åˆ†é‡
 		cameraV = camera->LookAt(camera->transform.position, Vector3f(0, 0.5, -1), Vector3f(0, 1, 0));
 	}
 	else if (IS_KEY_DOWN('4'))
 	{
-		// ¼õÐ¡ y ·ÖÁ¿
+		// å‡å° y åˆ†é‡
 		cameraV = camera->LookAt(camera->transform.position, Vector3f(0, -0.5, -1), Vector3f(0, 1, 0));
 	}
 	phongShader->v2f.v = cameraV;
@@ -109,7 +109,7 @@ void UpdateInput(Mesh *m, Matrix cameraV)
 	Matrix s= m->GetTransform().Scale(Vector3f(1,1,1));
 	Matrix r = m->GetTransform().Rotate(rotateVector);//Vector3f(2,0,11)Vector3f(298,32.9,77.59)Vector3f(-141, 83.2993, -14.5)Vector3f(13.5, 2.1, 0)
 	Matrix t=m->GetTransform().Translate(moveVector);//Vector3f(-1,0,0)
-	//×¢Òâ¾ØÕó³Ë·¨Ë³Ðò£¡£¡
+	//æ³¨æ„çŸ©é˜µä¹˜æ³•é¡ºåºï¼ï¼
 //	moveVector.Print();
 	M = t*r*s;
 	//M.Print();
@@ -129,10 +129,10 @@ int main()
 
 	Window *w = new Window(windowWidth, windowHeight, "Test");
 	device = new Renderer(w->screenHDC, windowWidth, windowHeight,camera);
-	//¹æ¶¨Ïà»úÓÀÔ¶Íù-z·½Ïò¿´£¬Õâ¾ö¶¨zbuffer³õÊ¼»¯Îª×î´óÖµ»¹ÊÇ×îÐ¡Öµ£¨×î´óÖµ£¬ÒòÎªÉî¶ÈÖµÎª¸ºÊý£©
-	//,ÊÓ¿ÚµÄ·¶Î§Ó¦¸ÃÊÇ0-¸ºÎÞÇî£¬Ïà·´£¬Èç¹ûÍùzÖá·½Ïò¿´£¬ÊÓ¿ÚµÄ·¶Î§Ó¦¸ÃÊÇ0-ÕýÎÞÇî
+	//è§„å®šç›¸æœºæ°¸è¿œå¾€-zæ–¹å‘çœ‹ï¼Œè¿™å†³å®šzbufferåˆå§‹åŒ–ä¸ºæœ€å¤§å€¼è¿˜æ˜¯æœ€å°å€¼ï¼ˆæœ€å¤§å€¼ï¼Œå› ä¸ºæ·±åº¦å€¼ä¸ºè´Ÿæ•°ï¼‰
+	//,è§†å£çš„èŒƒå›´åº”è¯¥æ˜¯0-è´Ÿæ— ç©·ï¼Œç›¸åï¼Œå¦‚æžœå¾€zè½´æ–¹å‘çœ‹ï¼Œè§†å£çš„èŒƒå›´åº”è¯¥æ˜¯0-æ­£æ— ç©·
 	Matrix cameraV = camera->LookAt(camera->transform.position, Vector3f(0, 0, -1), Vector3f(0, 1, 0));
-	//ÕâÀïÔ¶½üÆ½ÃæµÄÖµÏà¶ÔÓÚÎïÌå±ä»»µ½Ïà»ú×ø±êÏµµÄÎ»ÖÃ£¬·¶Î§´ÓÏà»úÎ»ÖÃ-1µ½-120£¬´ËÊ±ÎïÌåµÄÎ»ÖÃÔÚ-100×óÓÒ£¬½üÆ½ÃæÔ½¿¿½ü-100£¬Éî¶ÈÖµÔ½Ç÷½üÓÚ1£¬£¬Ïà·´Ô½Ç÷½üÓÚ-1
+	//è¿™é‡Œè¿œè¿‘å¹³é¢çš„å€¼ç›¸å¯¹äºŽç‰©ä½“å˜æ¢åˆ°ç›¸æœºåæ ‡ç³»çš„ä½ç½®ï¼ŒèŒƒå›´ä»Žç›¸æœºä½ç½®-1åˆ°-120ï¼Œæ­¤æ—¶ç‰©ä½“çš„ä½ç½®åœ¨-100å·¦å³ï¼Œè¿‘å¹³é¢è¶Šé è¿‘-100ï¼Œæ·±åº¦å€¼è¶Šè¶‹è¿‘äºŽ1ï¼Œï¼Œç›¸åè¶Šè¶‹è¿‘äºŽ-1
 	//Matrix cameraP = camera->Perspective(0.1, 0.1, -1, -120, 0.1, -0.1);
 	//Matrix cameraP = camera->Perspective(90, 1, 1, 10);
 	Matrix cameraP = camera->Orthographic(-10, 10, 0, -120, 10, -10);
@@ -140,7 +140,7 @@ int main()
 	DirectionLight light(Vector3f(0.2, 0.2, -1),Vector3f(0, 0, 100));
 	PointLight poingt(Vector3f(5, 5, -5), 2);
 	Texture *tessellation=new Texture();
-	tessellation->LoadTexture("D:/Desktop/Fox3D-master/Fox3D-master/resource/tessellation.bmp");
+	tessellation->LoadTexture("gezi.bmp");
 	phongShader = new PhongShader(PhongVert(), PhongFrag(tessellation, depthBuffer));
 	phongShader->v2f.cameraPos = camera->transform.position;
 	phongShader->v2f.dirlights.push_back(light);
@@ -239,7 +239,7 @@ void DoRender(Window *w)
 //	device->DrawTrangle(0, 100, 0, 200, 100, 200);
 //	device->DrawTrangle(0, 100, 100, 100, 100, 200);
 //	device->DrawTrangle(0, 100, 0, 200, 100, 200);
-	//Ë«»º³å
+	//åŒç¼“å†²
 	BitBlt(w->hdc, 0, 0, windowWidth, windowHeight, w->screenHDC, 0, 0, SRCCOPY);
 }
 
@@ -274,35 +274,35 @@ void CreateCube()
 	currentMesh->AddVertexData(1.0f, 1.0f, -1.0f, 1.0f, 1.0f, Vector3f(0, 0, -1),Color(1, 0, 0, 1));
 	currentMesh->AddVertexData(-1.0f, 1.0f, -1.0f, 0.0f, 1.0f, Vector3f(0, 0, -1), Color(1, 0, 0, 1));
 	currentMesh->AddVertexData(-1.0f, -1.0f, -1.0f, 0.0f, 0.0f, Vector3f(0, 0, -1),Color(1, 0, 0, 1));
-	//Ç°
+	//å‰
 	currentMesh->AddVertexData(-1.0f, -1.0f, 1.0f, 0.0f, 0.0f, Vector3f(0, 0, 1), Color(0, 1, 0, 1));
 	currentMesh->AddVertexData(1.0f, -1.0f, 1.0f, 1.0f, 0.0f, Vector3f(0, 0, 1), Color(0, 1, 0, 1));
 	currentMesh->AddVertexData(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, Vector3f(0, 0, 1), Color(0, 1, 0, 1));
 	currentMesh->AddVertexData(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, Vector3f(0, 0, 1), Color(0, 1, 0, 1));
 	currentMesh->AddVertexData(-1.0f, 1.0f, 1.0f, 0.0f, 1.0f, Vector3f(0, 0, 1), Color(0, 1, 0, 1));
 	currentMesh->AddVertexData(-1.0f, -1.0f, 1.0f, 0.0f, 0.0f, Vector3f(0, 0, 1), Color(0, 1, 0, 1));
-	//×ó
+	//å·¦
 	currentMesh->AddVertexData(-1.0f, 1.0f, 1.0f, 1.0f, 0.0f, Vector3f(-1, 0, 0));
 	currentMesh->AddVertexData(-1.0f, 1.0f, -1.0f, 1.0f, 1.0f, Vector3f(-1, 0, 0));
 	currentMesh->AddVertexData(-1.0f, -1.0f, -1.0f, 0.0f, 1.0f, Vector3f(-1, 0, 0));
 	currentMesh->AddVertexData(-1.0f, -1.0f, -1.0f, 0.0f, 1.0f, Vector3f(-1, 0, 0));
 	currentMesh->AddVertexData(-1.0f, -1.0f, 1.0f, 0.0f, 0.0f, Vector3f(-1, 0, 0));
 	currentMesh->AddVertexData(-1.0f, 1.0f, 1.0f, 1.0f, 0.0f, Vector3f(-1, 0, 0));
-	//ÓÒ
+	//å³
 	currentMesh->AddVertexData(1.0f, 1.0f, 1.0f, 1.0f, 0.0f, Vector3f(1, 0, 0),Color(0, 0, 1, 1));
 	currentMesh->AddVertexData(1.0f, 1.0f, -1.0f, 1.0f, 1.0f, Vector3f(1, 0, 0), Color(0, 0, 1, 1));
 	currentMesh->AddVertexData(1.0f, -1.0f, -1.0f, 0.0f, 1.0f, Vector3f(1, 0, 0), Color(0, 0, 1, 1));
 	currentMesh->AddVertexData(1.0f, -1.0f, -1.0f, 0.0f, 1.0f, Vector3f(1, 0, 0), Color(0, 0, 1, 1));
 	currentMesh->AddVertexData(1.0f, -1.0f, 1.0f, 0.0f, 0.0f, Vector3f(1, 0, 0), Color(0, 0, 1, 1));
 	currentMesh->AddVertexData(1.0f, 1.0f, 1.0f, 1.0f, 0.0f, Vector3f(1, 0, 0), Color(0, 0, 1, 1));
-	//ÏÂ
+	//ä¸‹
 	currentMesh->AddVertexData(-1.0f, -1.0f, -1.0f, 0.0f, 1.0f, Vector3f(0, -1, 0), Color(1, 1, 0, 1));
 	currentMesh->AddVertexData(1.0f, -1.0f, -1.0f, 1.0f, 1.0f, Vector3f(0, -1, 0), Color(1, 1, 0, 1));
 	currentMesh->AddVertexData(1.0f, -1.0f, 1.0f, 1.0f, 0.0f, Vector3f(0, -1, 0), Color(1, 1, 0, 1));
 	currentMesh->AddVertexData(1.0f, -1.0f, 1.0f, 1.0f, 0.0f, Vector3f(0, -1, 0), Color(1, 1, 0, 1));
 	currentMesh->AddVertexData(-1.0f, -1.0f, 1.0f, 0.0f, 0.0f, Vector3f(0, -1, 0), Color(1, 1, 0, 1));
 	currentMesh->AddVertexData(-1.0f, -1.0f, -1.0f, 0.0f, 1.0f, Vector3f(0, -1, 0), Color(1, 1, 0, 1));
-	//ÉÏ
+	//ä¸Š
 	currentMesh->AddVertexData(-1.0f, 1.0f, -1.0f, 0.0f, 1.0f, Vector3f(0, 1, 0));
 	currentMesh->AddVertexData(1.0f, 1.0f, -1.0f, 1.0f, 1.0f, Vector3f(0, 1, 0));
 	currentMesh->AddVertexData(1.0f, 1.0f, 1.0f, 1.0f, 0.0f, Vector3f(0, 1, 0));
@@ -314,22 +314,22 @@ void CreateCube()
 void CreatePyramid()
 {
 	float shiftX = 3.0f;
-	// µ×ÃæÈý½ÇÐÎ
+	// åº•é¢ä¸‰è§’å½¢
 	currentMesh->AddVertexData(-1.0f + shiftX, -1.0f, -1.0f, 0.0f, 0.0f, Vector3f(0, 0, -1), Color(1, 0, 0, 1));
 	currentMesh->AddVertexData(1.0f + shiftX, -1.0f, -1.0f, 1.0f, 0.0f, Vector3f(0, 0, -1), Color(1, 0, 0, 1));
 	currentMesh->AddVertexData(0.0f + shiftX, 0.0f, 1.0f, 0.5f, 0.5f, Vector3f(0, 0, 1), Color(0, 1, 0, 1));
 
-	// ×ó²àÈý½ÇÐÎ
+	// å·¦ä¾§ä¸‰è§’å½¢
 	currentMesh->AddVertexData(-1.0f + shiftX, -1.0f, -1.0f, 0.0f, 0.0f, Vector3f(-1, 0, 0), Color(1, 0, 0, 1));
 	currentMesh->AddVertexData(-1.0f + shiftX, 1.0f, -1.0f, 1.0f, 0.0f, Vector3f(-1, 0, 0), Color(1, 0, 0, 1));
 	currentMesh->AddVertexData(0.0f + shiftX, 0.0f, 1.0f, 0.5f, 0.5f, Vector3f(0, 0, 1), Color(0, 1, 0, 1));
 
-	// ÓÒ²àÈý½ÇÐÎ
+	// å³ä¾§ä¸‰è§’å½¢
 	currentMesh->AddVertexData(1.0f + shiftX, -1.0f, -1.0f, 0.0f, 0.0f, Vector3f(1, 0, 0), Color(1, 0, 0, 1));
 	currentMesh->AddVertexData(1.0f + shiftX, 1.0f, -1.0f, 1.0f, 0.0f, Vector3f(1, 0, 0), Color(1, 0, 0, 1));
 	currentMesh->AddVertexData(0.0f + shiftX, 0.0f, 1.0f, 0.5f, 0.5f, Vector3f(0, 0, 1), Color(0, 1, 0, 1));
 
-	// ºó²àÈý½ÇÐÎ
+	// åŽä¾§ä¸‰è§’å½¢
 	currentMesh->AddVertexData(1.0f + shiftX, 1.0f, -1.0f, 0.0f, 0.0f, Vector3f(0, 1, 0), Color(0, 0, 1, 1));
 	currentMesh->AddVertexData(-1.0f + shiftX, 1.0f, -1.0f, 1.0f, 0.0f, Vector3f(0, 1, 0), Color(0, 0, 1, 1));
 	currentMesh->AddVertexData(0.0f + shiftX, 0.0f, 1.0f, 0.5f, 0.5f, Vector3f(0, 0, 1), Color(0, 1, 0, 1));
@@ -349,7 +349,7 @@ void CreatePlane()
 	Matrix s = m->GetTransform().Scale(Vector3f(5, 5,5));
 	Matrix r = m->GetTransform().Rotate(Vector3f(0,0,0));//Vector3f(-142,0,0.9)
 	Matrix t = m->GetTransform().Translate(Vector3f(0, 0, -5));
-	//×¢Òâ¾ØÕó³Ë·¨Ë³Ðò£¡£¡
+	//æ³¨æ„çŸ©é˜µä¹˜æ³•é¡ºåºï¼ï¼
 	M = t * r*s;
 	planeShader->v2f.m = M;
 	plane->SetObjectToWorld(M);
